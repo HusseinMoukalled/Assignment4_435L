@@ -1,0 +1,1114 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyQt5 module &mdash; Lab 3 - Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="db_helper module" href="db_helper.html" />
+    <link rel="prev" title="Lab 3 - Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Lab 3 - Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pyQt5 module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.Course"><code class="docutils literal notranslate"><span class="pre">Course</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.Course.add_student"><code class="docutils literal notranslate"><span class="pre">Course.add_student()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.DB_PATH"><code class="docutils literal notranslate"><span class="pre">DB_PATH</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.Instructor"><code class="docutils literal notranslate"><span class="pre">Instructor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.Instructor.assign_course"><code class="docutils literal notranslate"><span class="pre">Instructor.assign_course()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.MainWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.add_course"><code class="docutils literal notranslate"><span class="pre">MainWindow.add_course()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.add_instructor"><code class="docutils literal notranslate"><span class="pre">MainWindow.add_instructor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.add_student"><code class="docutils literal notranslate"><span class="pre">MainWindow.add_student()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.assign_instructor"><code class="docutils literal notranslate"><span class="pre">MainWindow.assign_instructor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.backup_database"><code class="docutils literal notranslate"><span class="pre">MainWindow.backup_database()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.delete_selected_course"><code class="docutils literal notranslate"><span class="pre">MainWindow.delete_selected_course()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.delete_selected_instructor"><code class="docutils literal notranslate"><span class="pre">MainWindow.delete_selected_instructor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.delete_selected_student"><code class="docutils literal notranslate"><span class="pre">MainWindow.delete_selected_student()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.export_csv"><code class="docutils literal notranslate"><span class="pre">MainWindow.export_csv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.load_course_into_form"><code class="docutils literal notranslate"><span class="pre">MainWindow.load_course_into_form()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.load_from_database"><code class="docutils literal notranslate"><span class="pre">MainWindow.load_from_database()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.load_instructor_into_form"><code class="docutils literal notranslate"><span class="pre">MainWindow.load_instructor_into_form()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.load_json"><code class="docutils literal notranslate"><span class="pre">MainWindow.load_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.load_student_into_form"><code class="docutils literal notranslate"><span class="pre">MainWindow.load_student_into_form()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.refresh_all_dropdowns"><code class="docutils literal notranslate"><span class="pre">MainWindow.refresh_all_dropdowns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.refresh_tables"><code class="docutils literal notranslate"><span class="pre">MainWindow.refresh_tables()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.register_student"><code class="docutils literal notranslate"><span class="pre">MainWindow.register_student()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.save_json"><code class="docutils literal notranslate"><span class="pre">MainWindow.save_json()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.update_selected_course"><code class="docutils literal notranslate"><span class="pre">MainWindow.update_selected_course()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.update_selected_instructor"><code class="docutils literal notranslate"><span class="pre">MainWindow.update_selected_instructor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.MainWindow.update_selected_student"><code class="docutils literal notranslate"><span class="pre">MainWindow.update_selected_student()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.Person"><code class="docutils literal notranslate"><span class="pre">Person</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.Person.introduce"><code class="docutils literal notranslate"><span class="pre">Person.introduce()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.Student"><code class="docutils literal notranslate"><span class="pre">Student</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyQt5.Student.register_course"><code class="docutils literal notranslate"><span class="pre">Student.register_course()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.alert"><code class="docutils literal notranslate"><span class="pre">alert()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.backup_db"><code class="docutils literal notranslate"><span class="pre">backup_db()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.courses"><code class="docutils literal notranslate"><span class="pre">courses</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_add_course"><code class="docutils literal notranslate"><span class="pre">db_add_course()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_add_instructor"><code class="docutils literal notranslate"><span class="pre">db_add_instructor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_add_student"><code class="docutils literal notranslate"><span class="pre">db_add_student()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_delete_course"><code class="docutils literal notranslate"><span class="pre">db_delete_course()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_delete_instructor"><code class="docutils literal notranslate"><span class="pre">db_delete_instructor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_delete_student"><code class="docutils literal notranslate"><span class="pre">db_delete_student()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_enroll"><code class="docutils literal notranslate"><span class="pre">db_enroll()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_fetch_all"><code class="docutils literal notranslate"><span class="pre">db_fetch_all()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_update_course"><code class="docutils literal notranslate"><span class="pre">db_update_course()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_update_instructor"><code class="docutils literal notranslate"><span class="pre">db_update_instructor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.db_update_student"><code class="docutils literal notranslate"><span class="pre">db_update_student()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.email_ok"><code class="docutils literal notranslate"><span class="pre">email_ok()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.error"><code class="docutils literal notranslate"><span class="pre">error()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.find_course"><code class="docutils literal notranslate"><span class="pre">find_course()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.find_instructor"><code class="docutils literal notranslate"><span class="pre">find_instructor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.find_student"><code class="docutils literal notranslate"><span class="pre">find_student()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.init_db"><code class="docutils literal notranslate"><span class="pre">init_db()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.instructors"><code class="docutils literal notranslate"><span class="pre">instructors</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.load_from_file"><code class="docutils literal notranslate"><span class="pre">load_from_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.save_to_file"><code class="docutils literal notranslate"><span class="pre">save_to_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.serialization_json"><code class="docutils literal notranslate"><span class="pre">serialization_json()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyQt5.students"><code class="docutils literal notranslate"><span class="pre">students</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="db_helper.html">db_helper module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Lab 3 - Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">pyQt5 module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyQt5.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pyQt5">
+<span id="pyqt5-module"></span><h1>pyQt5 module<a class="headerlink" href="#module-pyQt5" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyQt5.Course">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">Course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">course_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Course" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a course with an assigned instructor and a roster of students.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>course_id</strong> (<em>str</em>) – Unique course identifier.</p></li>
+<li><p><strong>course_name</strong> (<em>str</em>) – Human-readable course name.</p></li>
+<li><p><strong>instructor</strong> (<a class="reference internal" href="#pyQt5.Instructor" title="pyQt5.Instructor"><em>Instructor</em></a>) – Instructor assigned to the course.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If <code class="docutils literal notranslate"><span class="pre">instructor</span></code> is not an <a class="reference internal" href="#pyQt5.Instructor" title="pyQt5.Instructor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Instructor</span></code></a>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.Course.add_student">
+<span class="sig-name descname"><span class="pre">add_student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">student</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Course.add_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Course.add_student" title="Link to this definition"></a></dt>
+<dd><p>Enroll a student into the course.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>student</strong> (<a class="reference internal" href="#pyQt5.Student" title="pyQt5.Student"><em>Student</em></a>) – Student to add.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If <code class="docutils literal notranslate"><span class="pre">student</span></code> is not a <a class="reference internal" href="#pyQt5.Student" title="pyQt5.Student"><code class="xref py py-class docutils literal notranslate"><span class="pre">Student</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyQt5.DB_PATH">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">DB_PATH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'school.db'</span></em><a class="headerlink" href="#pyQt5.DB_PATH" title="Link to this definition"></a></dt>
+<dd><p>Default path to the SQLite database file used by the application.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyQt5.Instructor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">Instructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Instructor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyQt5.Person" title="pyQt5.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a></p>
+<p>Subclass representing an instructor. Inherits from <a class="reference internal" href="#pyQt5.Person" title="pyQt5.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Instructor’s name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – Instructor’s age.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – Instructor’s email.</p></li>
+<li><p><strong>instructor_id</strong> (<em>str</em>) – Unique instructor identifier.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.Instructor.assign_course">
+<span class="sig-name descname"><span class="pre">assign_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Instructor.assign_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Instructor.assign_course" title="Link to this definition"></a></dt>
+<dd><p>Assign a course to this instructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>course</strong> (<a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><em>Course</em></a>) – Course to assign.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If <code class="docutils literal notranslate"><span class="pre">course</span></code> is not an instance of <a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><code class="xref py py-class docutils literal notranslate"><span class="pre">Course</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyQt5.MainWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><a class="reference internal" href="_modules/pyQt5.html#MainWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
+<p>Main window of the School Management System built with PyQt5.</p>
+<p>Provides forms for adding/updating students, instructors, and courses,
+along with search/filtering, JSON import/export, CSV export, database
+backup, and enrollment/assignment actions.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.add_course">
+<span class="sig-name descname"><span class="pre">add_course</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.add_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.add_course" title="Link to this definition"></a></dt>
+<dd><p>Add a new course using the values from the course form fields.</p>
+<p>Requires an existing instructor ID. Inserts into DB, updates in-memory list,
+and refreshes the UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.add_instructor">
+<span class="sig-name descname"><span class="pre">add_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.add_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.add_instructor" title="Link to this definition"></a></dt>
+<dd><p>Add a new instructor using the values from the instructor form fields.</p>
+<p>Validates inputs, inserts into DB, updates in-memory list, and refreshes UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.add_student">
+<span class="sig-name descname"><span class="pre">add_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.add_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.add_student" title="Link to this definition"></a></dt>
+<dd><p>Add a new student using the values from the student form fields.</p>
+<p>Performs basic validation (non-empty fields, integer age, email format,
+and unique student ID), inserts the record into the DB, updates the
+in-memory list, and refreshes the UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.assign_instructor">
+<span class="sig-name descname"><span class="pre">assign_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.assign_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.assign_instructor" title="Link to this definition"></a></dt>
+<dd><p>Assign the selected instructor to the selected course.</p>
+<p>Updates the course’s instructor and persists to DB.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.backup_database">
+<span class="sig-name descname"><span class="pre">backup_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.backup_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.backup_database" title="Link to this definition"></a></dt>
+<dd><p>Create a backup of the SQLite database in the current directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.delete_selected_course">
+<span class="sig-name descname"><span class="pre">delete_selected_course</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.delete_selected_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.delete_selected_course" title="Link to this definition"></a></dt>
+<dd><p>Delete the selected course from the table and database, cleaning up relationships.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.delete_selected_instructor">
+<span class="sig-name descname"><span class="pre">delete_selected_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.delete_selected_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.delete_selected_instructor" title="Link to this definition"></a></dt>
+<dd><p>Delete the selected instructor from the table and database if they have no assigned courses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.delete_selected_student">
+<span class="sig-name descname"><span class="pre">delete_selected_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.delete_selected_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.delete_selected_student" title="Link to this definition"></a></dt>
+<dd><p>Delete the selected student from the table and database.</p>
+<p>Also removes the student from any course enrollments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.export_csv">
+<span class="sig-name descname"><span class="pre">export_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.export_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.export_csv" title="Link to this definition"></a></dt>
+<dd><p>Export students, instructors, and courses to CSV files in a chosen folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.load_course_into_form">
+<span class="sig-name descname"><span class="pre">load_course_into_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.load_course_into_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.load_course_into_form" title="Link to this definition"></a></dt>
+<dd><p>Load the selected course record from the table into the course form fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.load_from_database">
+<span class="sig-name descname"><span class="pre">load_from_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.load_from_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.load_from_database" title="Link to this definition"></a></dt>
+<dd><p>Load all records from SQLite into in-memory lists and refresh the UI.</p>
+<p>This synchronizes the in-memory data structures (<a class="reference internal" href="#pyQt5.students" title="pyQt5.students"><code class="xref py py-data docutils literal notranslate"><span class="pre">students</span></code></a>,
+<a class="reference internal" href="#pyQt5.instructors" title="pyQt5.instructors"><code class="xref py py-data docutils literal notranslate"><span class="pre">instructors</span></code></a>, <a class="reference internal" href="#pyQt5.courses" title="pyQt5.courses"><code class="xref py py-data docutils literal notranslate"><span class="pre">courses</span></code></a>) with the database and updates
+the comboboxes and tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.load_instructor_into_form">
+<span class="sig-name descname"><span class="pre">load_instructor_into_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.load_instructor_into_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.load_instructor_into_form" title="Link to this definition"></a></dt>
+<dd><p>Load the selected instructor record from the table into the instructor form fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.load_json">
+<span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.load_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.load_json" title="Link to this definition"></a></dt>
+<dd><p>Load data from a JSON file into in-memory objects and refresh the UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>FileNotFoundError</strong> – If selected file cannot be found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.load_student_into_form">
+<span class="sig-name descname"><span class="pre">load_student_into_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.load_student_into_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.load_student_into_form" title="Link to this definition"></a></dt>
+<dd><p>Load the selected student record from the table into the student form fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.refresh_all_dropdowns">
+<span class="sig-name descname"><span class="pre">refresh_all_dropdowns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.refresh_all_dropdowns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.refresh_all_dropdowns" title="Link to this definition"></a></dt>
+<dd><p>Refresh the contents of student/course/instructor comboboxes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.refresh_tables">
+<span class="sig-name descname"><span class="pre">refresh_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.refresh_tables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.refresh_tables" title="Link to this definition"></a></dt>
+<dd><p>Refresh the students, instructors, and courses tables with current data.</p>
+<p>Applies a case-insensitive search filter on ID/name/email fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.register_student">
+<span class="sig-name descname"><span class="pre">register_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.register_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.register_student" title="Link to this definition"></a></dt>
+<dd><p>Register the selected student to the selected course.</p>
+<p>Uses combobox selections; persists the relation in DB and updates UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.save_json">
+<span class="sig-name descname"><span class="pre">save_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.save_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.save_json" title="Link to this definition"></a></dt>
+<dd><p>Save the in-memory data to a JSON file via a file dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.update_selected_course">
+<span class="sig-name descname"><span class="pre">update_selected_course</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.update_selected_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.update_selected_course" title="Link to this definition"></a></dt>
+<dd><p>Update the currently selected course in the table based on the form fields.</p>
+<p>Handles reassignment of instructor if changed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.update_selected_instructor">
+<span class="sig-name descname"><span class="pre">update_selected_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.update_selected_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.update_selected_instructor" title="Link to this definition"></a></dt>
+<dd><p>Update the currently selected instructor in the table based on the form fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.MainWindow.update_selected_student">
+<span class="sig-name descname"><span class="pre">update_selected_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#MainWindow.update_selected_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.MainWindow.update_selected_student" title="Link to this definition"></a></dt>
+<dd><p>Update the currently selected student in the table based on the form fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyQt5.Person">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">Person</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Person" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class representing a person with name, age, and email.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Full name of the person.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – Age of the person; must be a non-negative integer.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – Email address in the format <code class="docutils literal notranslate"><span class="pre">name&#64;example.com</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">age</span></code> is negative or not an int, or if <code class="docutils literal notranslate"><span class="pre">email</span></code> is not in a valid format.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.Person.introduce">
+<span class="sig-name descname"><span class="pre">introduce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Person.introduce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Person.introduce" title="Link to this definition"></a></dt>
+<dd><p>Print a short self-introduction to stdout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyQt5.Student">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">Student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">student_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Student" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyQt5.Person" title="pyQt5.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a></p>
+<p>Subclass representing a student. Inherits from <a class="reference internal" href="#pyQt5.Person" title="pyQt5.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Student’s name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – Student’s age.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – Student’s email.</p></li>
+<li><p><strong>student_id</strong> (<em>str</em>) – Unique student identifier.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyQt5.Student.register_course">
+<span class="sig-name descname"><span class="pre">register_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#Student.register_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.Student.register_course" title="Link to this definition"></a></dt>
+<dd><p>Register the student to a course.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>course</strong> (<a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><em>Course</em></a>) – Course to register the student in.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If <code class="docutils literal notranslate"><span class="pre">course</span></code> is not an instance of <a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><code class="xref py py-class docutils literal notranslate"><span class="pre">Course</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.alert">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">alert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#alert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.alert" title="Link to this definition"></a></dt>
+<dd><p>Show an information dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>QWidget</em>) – Parent widget.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Dialog title.</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – Message text.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.backup_db">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">backup_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school_backup.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#backup_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.backup_db" title="Link to this definition"></a></dt>
+<dd><p>Create a file copy of the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<em>str</em>) – Source database path.</p></li>
+<li><p><strong>dst</strong> (<em>str</em>) – Destination backup filename.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Absolute path of the backup file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyQt5.courses">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">courses</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#pyQt5.courses" title="Link to this definition"></a></dt>
+<dd><p>In-memory list of <a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><code class="xref py py-class docutils literal notranslate"><span class="pre">Course</span></code></a> objects currently loaded in the UI.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_add_course">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_add_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_add_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_add_course" title="Link to this definition"></a></dt>
+<dd><p>Insert or replace a course.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cid</strong> (<em>str</em>) – Course ID.</p></li>
+<li><p><strong>cname</strong> (<em>str</em>) – Course name.</p></li>
+<li><p><strong>iid</strong> (<em>str</em>) – Instructor ID.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_add_instructor">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_add_instructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_add_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_add_instructor" title="Link to this definition"></a></dt>
+<dd><p>Insert or replace an instructor record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iid</strong> (<em>str</em>) – Instructor ID.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – Age.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – Email.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_add_student">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_add_student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_add_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_add_student" title="Link to this definition"></a></dt>
+<dd><p>Insert or replace a student record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sid</strong> (<em>str</em>) – Student ID.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Student name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – Student age.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – Student email.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_delete_course">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_delete_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_delete_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_delete_course" title="Link to this definition"></a></dt>
+<dd><p>Delete a course and its enrollments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cid</strong> (<em>str</em>) – Course ID.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_delete_instructor">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_delete_instructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_delete_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_delete_instructor" title="Link to this definition"></a></dt>
+<dd><p>Delete an instructor if they have no assigned courses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iid</strong> (<em>str</em>) – Instructor ID.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_delete_student">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_delete_student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_delete_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_delete_student" title="Link to this definition"></a></dt>
+<dd><p>Delete a student and related enrollments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sid</strong> (<em>str</em>) – Student ID to delete.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_enroll">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_enroll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_enroll"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_enroll" title="Link to this definition"></a></dt>
+<dd><p>Enroll a student into a course (no duplicates).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sid</strong> (<em>str</em>) – Student ID.</p></li>
+<li><p><strong>cid</strong> (<em>str</em>) – Course ID.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_fetch_all">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_fetch_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_fetch_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_fetch_all" title="Link to this definition"></a></dt>
+<dd><p>Fetch all rows from all tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db_path</strong> (<em>str</em>) – Path to the SQLite DB file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys <code class="docutils literal notranslate"><span class="pre">students</span></code>, <code class="docutils literal notranslate"><span class="pre">instructors</span></code>, <code class="docutils literal notranslate"><span class="pre">courses</span></code>, <code class="docutils literal notranslate"><span class="pre">enrollments</span></code>; each value is a list of tuples.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_update_course">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_update_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_update_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_update_course" title="Link to this definition"></a></dt>
+<dd><p>Update a course by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cid</strong> (<em>str</em>) – Course ID.</p></li>
+<li><p><strong>cname</strong> (<em>str</em>) – New course name.</p></li>
+<li><p><strong>iid</strong> (<em>str</em>) – New instructor ID.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_update_instructor">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_update_instructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_update_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_update_instructor" title="Link to this definition"></a></dt>
+<dd><p>Update an instructor by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iid</strong> (<em>str</em>) – Instructor ID.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – New name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – New age.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – New email.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.db_update_student">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">db_update_student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#db_update_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.db_update_student" title="Link to this definition"></a></dt>
+<dd><p>Update a student record by ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sid</strong> (<em>str</em>) – Student ID.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – New name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – New age.</p></li>
+<li><p><strong>email</strong> (<em>str</em>) – New email.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – DB path.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.email_ok">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">email_ok</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pyQt5.html#email_ok"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.email_ok" title="Link to this definition"></a></dt>
+<dd><p>Validate a simple email format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>str</em>) – Email string to validate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the email looks valid, else <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.error">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.error" title="Link to this definition"></a></dt>
+<dd><p>Show an error dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>QWidget</em>) – Parent widget.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Dialog title.</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – Error message text.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.find_course">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">find_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#find_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.find_course" title="Link to this definition"></a></dt>
+<dd><p>Find a course object by ID in the in-memory list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cid</strong> (<em>str</em>) – Course ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The matching <a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><code class="xref py py-class docutils literal notranslate"><span class="pre">Course</span></code></a> or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course">Course</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.find_instructor">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">find_instructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#find_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.find_instructor" title="Link to this definition"></a></dt>
+<dd><p>Find an instructor object by ID in the in-memory list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>iid</strong> (<em>str</em>) – Instructor ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The matching <a class="reference internal" href="#pyQt5.Instructor" title="pyQt5.Instructor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Instructor</span></code></a> or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyQt5.Instructor" title="pyQt5.Instructor">Instructor</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.find_student">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">find_student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#find_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.find_student" title="Link to this definition"></a></dt>
+<dd><p>Find a student object by ID in the in-memory list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sid</strong> (<em>str</em>) – Student ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The matching <a class="reference internal" href="#pyQt5.Student" title="pyQt5.Student"><code class="xref py py-class docutils literal notranslate"><span class="pre">Student</span></code></a> or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pyQt5.Student" title="pyQt5.Student">Student</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.init_db">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">init_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'school.db'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#init_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.init_db" title="Link to this definition"></a></dt>
+<dd><p>Initialize the SQLite database, creating tables if they do not exist.</p>
+<p>Tables: <code class="docutils literal notranslate"><span class="pre">students</span></code>, <code class="docutils literal notranslate"><span class="pre">instructors</span></code>, <code class="docutils literal notranslate"><span class="pre">courses</span></code>, <code class="docutils literal notranslate"><span class="pre">enrollments</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>db_path</strong> (<em>str</em>) – Path to the SQLite DB file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyQt5.instructors">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">instructors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#pyQt5.instructors" title="Link to this definition"></a></dt>
+<dd><p>In-memory list of <a class="reference internal" href="#pyQt5.Instructor" title="pyQt5.Instructor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Instructor</span></code></a> objects currently loaded in the UI.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.load_from_file">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">load_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#load_from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.load_from_file" title="Link to this definition"></a></dt>
+<dd><p>Load data from a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Path to JSON file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Parsed data with keys <code class="docutils literal notranslate"><span class="pre">students</span></code>, <code class="docutils literal notranslate"><span class="pre">instructors</span></code>, and <code class="docutils literal notranslate"><span class="pre">courses</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If file does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.save_to_file">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">save_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">students</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">courses</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#save_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.save_to_file" title="Link to this definition"></a></dt>
+<dd><p>Save current data to a JSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Destination JSON filename.</p></li>
+<li><p><strong>students</strong> (<em>list</em>) – List of <a class="reference internal" href="#pyQt5.Student" title="pyQt5.Student"><code class="xref py py-class docutils literal notranslate"><span class="pre">Student</span></code></a> objects.</p></li>
+<li><p><strong>instructors</strong> (<em>list</em>) – List of <a class="reference internal" href="#pyQt5.Instructor" title="pyQt5.Instructor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Instructor</span></code></a> objects.</p></li>
+<li><p><strong>courses</strong> (<em>list</em>) – List of <a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><code class="xref py py-class docutils literal notranslate"><span class="pre">Course</span></code></a> objects.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyQt5.serialization_json">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">serialization_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">students</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">courses</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyQt5.html#serialization_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyQt5.serialization_json" title="Link to this definition"></a></dt>
+<dd><p>Serialize in-memory objects to a JSON-friendly dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>students</strong> (<em>list</em>) – List of <a class="reference internal" href="#pyQt5.Student" title="pyQt5.Student"><code class="xref py py-class docutils literal notranslate"><span class="pre">Student</span></code></a> objects.</p></li>
+<li><p><strong>instructors</strong> (<em>list</em>) – List of <a class="reference internal" href="#pyQt5.Instructor" title="pyQt5.Instructor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Instructor</span></code></a> objects.</p></li>
+<li><p><strong>courses</strong> (<em>list</em>) – List of <a class="reference internal" href="#pyQt5.Course" title="pyQt5.Course"><code class="xref py py-class docutils literal notranslate"><span class="pre">Course</span></code></a> objects.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary with keys <code class="docutils literal notranslate"><span class="pre">students</span></code>, <code class="docutils literal notranslate"><span class="pre">instructors</span></code>, and <code class="docutils literal notranslate"><span class="pre">courses</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pyQt5.students">
+<span class="sig-prename descclassname"><span class="pre">pyQt5.</span></span><span class="sig-name descname"><span class="pre">students</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#pyQt5.students" title="Link to this definition"></a></dt>
+<dd><p>In-memory list of <a class="reference internal" href="#pyQt5.Student" title="pyQt5.Student"><code class="xref py py-class docutils literal notranslate"><span class="pre">Student</span></code></a> objects currently loaded in the UI.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Lab 3 - Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="db_helper.html" class="btn btn-neutral float-right" title="db_helper module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hussein Moukalled 202306186.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
