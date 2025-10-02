@@ -1,0 +1,1045 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tkinter &mdash; Lab 3 - Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lab 3 - Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyQt5.html">pyQt5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db_helper.html">db_helper module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lab 3 - Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">Tkinter</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for Tkinter</h1><div class="highlight"><pre>
+<span></span><span class="c1">#On my honor I have neither given nor received unauthorized aid on this assignment. I used AI tools to research concepts, understand the code and get templates.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">messagebox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<div class="viewcode-block" id="Person">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Person">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">age</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Age must be a positive integer&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;@&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email</span> <span class="ow">or</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="c1">#email.split(&#39;@&#39;)[-1] returns a list where the part after the @ is the last entry (at idx -1) and we check for a &#39;.&#39; in it</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Email must be a string of valid format: name@example.com&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="o">=</span><span class="n">age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="o">=</span><span class="n">email</span>  <span class="c1">#the single _ in python is to indicate that the attribute is not to be used outside the class (dosn&#39;t actually enfore it, it&#39;s more of a convention)</span>
+
+<div class="viewcode-block" id="Person.introduce">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Person.introduce">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">introduce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> and I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span></div>
+</div>
+
+        
+<div class="viewcode-block" id="Student">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Student">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span> <span class="c1">#Subclass basically means it inherits from Person class, so uses all its attributes + its own</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">student_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="c1">#I didn&#39;t include registered_courses as an attribute here because It should start off as an empty list for all students, </span>
+        <span class="c1">#therefor rather than forcing user to define an instance as: Student(Hussein, 21, ham69, 202306, [] or some course name) the user can just define an instance as: Student(Hussein, 21, ham69, 202306)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span> <span class="c1">#used to inherit the attributes from parent Person class</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span><span class="o">=</span><span class="n">student_id</span> <span class="c1">#new attribute for student class so we define it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">=</span><span class="p">[]</span> <span class="c1">#now we define the attribute registered_courses as an empty list. Again the entire point is not to force users to enter a course name when creating the instance </span>
+
+<div class="viewcode-block" id="Student.register_course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Student.register_course">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="n">Course</span><span class="p">):</span>  <span class="c1">#This ensures the constraints listed in the class definition are met: the student must register to a course that is an instance of the course Class</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;This course is not recognized&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>  <span class="c1">#whenever this method is called, the course is added to the registered_courses list</span></div>
+</div>
+
+
+<div class="viewcode-block" id="Instructor">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Instructor">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Instructor</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span> <span class="c1">#As per the reasonning for the Student subclass, we don&#39;t include assigned_courses as an attribute</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span><span class="o">=</span><span class="n">instructor_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">=</span><span class="p">[]</span>
+
+<div class="viewcode-block" id="Instructor.assign_course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Instructor.assign_course">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">assign_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="n">Course</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;This course is not recognized&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span></div>
+</div>
+
+
+<div class="viewcode-block" id="Course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Course">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Course</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">course_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">instructor</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instructor</span><span class="p">,</span> <span class="n">Instructor</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;This instructor is not recognized&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span><span class="o">=</span><span class="n">course_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span><span class="o">=</span><span class="n">course_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="o">=</span><span class="n">instructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span><span class="o">=</span><span class="p">[]</span>
+
+<div class="viewcode-block" id="Course.add_student">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.Course.add_student">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">student</span><span class="p">,</span> <span class="n">Student</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;This student is not recognized&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">student</span><span class="p">)</span></div>
+</div>
+
+
+
+
+<div class="viewcode-block" id="serialization_json">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.serialization_json">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">serialization_json</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">instructors</span><span class="p">,</span> <span class="n">courses</span><span class="p">):</span> <span class="c1">#We will now work on saving and loading to the classes created using JSON</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;students&quot;</span><span class="p">:[],</span>
+        <span class="s2">&quot;instructors&quot;</span><span class="p">:[],</span>
+        <span class="s2">&quot;courses&quot;</span><span class="p">:[]</span> 
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;students&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">student</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">student</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">student</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="s2">&quot;student_id&quot;</span><span class="p">:</span> <span class="n">student</span><span class="o">.</span><span class="n">student_id</span><span class="p">,</span> <span class="s2">&quot;registered_courses&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">course</span><span class="o">.</span><span class="n">course_id</span> <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">student</span><span class="o">.</span><span class="n">registered_courses</span><span class="p">]})</span>
+
+    <span class="k">for</span> <span class="n">instructor</span> <span class="ow">in</span> <span class="n">instructors</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;instructors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">instructor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">instructor</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="n">instructor</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="s2">&quot;instructor_id&quot;</span><span class="p">:</span> <span class="n">instructor</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">,</span> <span class="s2">&quot;assigned_courses&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">course</span><span class="o">.</span><span class="n">course_id</span> <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">]})</span>
+
+    <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;courses&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;course_id&quot;</span><span class="p">:</span> <span class="n">course</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="s2">&quot;course_name&quot;</span><span class="p">:</span> <span class="n">course</span><span class="o">.</span><span class="n">course_name</span><span class="p">,</span> <span class="s2">&quot;instructor_id&quot;</span><span class="p">:</span><span class="n">course</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">,</span> <span class="s2">&quot;enrolled_students&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">student</span><span class="o">.</span><span class="n">student_id</span> <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">course</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">]})</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="save_to_file">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.save_to_file">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_to_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">students</span><span class="p">,</span> <span class="n">instructors</span><span class="p">,</span> <span class="n">courses</span><span class="p">):</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">serialization_json</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">instructors</span><span class="p">,</span> <span class="n">courses</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data successfully saved to&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="load_from_file">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.load_from_file">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data loaded successfully from&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">db_helper</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">init_db</span><span class="p">,</span> <span class="n">db_fetch_all</span><span class="p">,</span> <span class="n">backup_db</span><span class="p">,</span>
+    <span class="n">db_add_student</span><span class="p">,</span> <span class="n">db_update_student</span><span class="p">,</span> <span class="n">db_delete_student</span><span class="p">,</span>
+    <span class="n">db_add_instructor</span><span class="p">,</span> <span class="n">db_update_instructor</span><span class="p">,</span> <span class="n">db_delete_instructor</span><span class="p">,</span>
+    <span class="n">db_add_course</span><span class="p">,</span> <span class="n">db_update_course</span><span class="p">,</span> <span class="n">db_delete_course</span><span class="p">,</span>
+    <span class="n">db_enroll</span>
+<span class="p">)</span>
+<span class="n">DB_PATH</span> <span class="o">=</span> <span class="s2">&quot;school.db&quot;</span>
+<span class="n">init_db</span><span class="p">(</span><span class="n">DB_PATH</span><span class="p">)</span>
+
+<div class="viewcode-block" id="load_from_database">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.load_from_database">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_from_database</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">db_fetch_all</span><span class="p">(</span><span class="n">DB_PATH</span><span class="p">)</span>
+    <span class="n">students</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="n">instructors</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="n">courses</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">iid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;instructors&quot;</span><span class="p">]:</span>
+        <span class="n">instructors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Instructor</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">age</span><span class="p">),</span> <span class="n">email</span><span class="p">,</span> <span class="n">iid</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">sid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;students&quot;</span><span class="p">]:</span>
+        <span class="n">students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Student</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">age</span><span class="p">),</span> <span class="n">email</span><span class="p">,</span> <span class="n">sid</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_instr</span><span class="p">(</span><span class="n">iid</span><span class="p">):</span> <span class="k">return</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">instructors</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">==</span> <span class="n">iid</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">cid</span><span class="p">,</span> <span class="n">cname</span><span class="p">,</span> <span class="n">iid</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;courses&quot;</span><span class="p">]:</span>
+        <span class="n">ins</span> <span class="o">=</span> <span class="n">_find_instr</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ins</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">cname</span><span class="p">,</span> <span class="n">ins</span><span class="p">)</span>
+        <span class="n">courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="n">ins</span><span class="o">.</span><span class="n">assign_course</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_stu</span><span class="p">(</span><span class="n">sid</span><span class="p">):</span> <span class="k">return</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">students</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">student_id</span> <span class="o">==</span> <span class="n">sid</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_crs</span><span class="p">(</span><span class="n">cid</span><span class="p">):</span> <span class="k">return</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">courses</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">course_id</span> <span class="o">==</span> <span class="n">cid</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">sid</span><span class="p">,</span> <span class="n">cid</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;enrollments&quot;</span><span class="p">]:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">_find_stu</span><span class="p">(</span><span class="n">sid</span><span class="p">);</span> <span class="n">c</span> <span class="o">=</span> <span class="n">_find_crs</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">and</span> <span class="n">c</span> <span class="ow">and</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">:</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">add_student</span><span class="p">(</span><span class="n">s</span><span class="p">);</span> <span class="n">s</span><span class="o">.</span><span class="n">register_course</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="n">refresh_registration_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;DB&quot;</span><span class="p">,</span> <span class="s2">&quot;Loaded from SQLite database.&quot;</span><span class="p">)</span></div>
+
+
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span><span class="p">,</span> <span class="n">messagebox</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;School Management System&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;900x650&quot;</span><span class="p">)</span> 
+
+
+<span class="n">outer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">outer</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">outer</span><span class="p">,</span> <span class="n">highlightthickness</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">vbar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">outer</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">yview</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">yscrollcommand</span><span class="o">=</span><span class="n">vbar</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
+
+<span class="n">vbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">create_window</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">window</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_on_frame_config</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+    <span class="n">canvas</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">scrollregion</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">bbox</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">))</span>
+<span class="n">content</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Configure&gt;&quot;</span><span class="p">,</span> <span class="n">_on_frame_config</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_on_mousewheel</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">delta</span><span class="p">:</span> 
+        <span class="n">canvas</span><span class="o">.</span><span class="n">yview_scroll</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">delta</span> <span class="o">/</span> <span class="mi">120</span><span class="p">)),</span> <span class="s2">&quot;units&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_on_linux_up</span><span class="p">(</span><span class="n">event</span><span class="p">):</span> <span class="n">canvas</span><span class="o">.</span><span class="n">yview_scroll</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_on_linux_down</span><span class="p">(</span><span class="n">event</span><span class="p">):</span> <span class="n">canvas</span><span class="o">.</span><span class="n">yview_scroll</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">bind_all</span><span class="p">(</span><span class="s2">&quot;&lt;MouseWheel&gt;&quot;</span><span class="p">,</span> <span class="n">_on_mousewheel</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">bind_all</span><span class="p">(</span><span class="s2">&quot;&lt;Button-4&gt;&quot;</span><span class="p">,</span> <span class="n">_on_linux_up</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">bind_all</span><span class="p">(</span><span class="s2">&quot;&lt;Button-5&gt;&quot;</span><span class="p">,</span> <span class="n">_on_linux_down</span><span class="p">)</span>
+
+<span class="n">students</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">instructors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">courses</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="find_student">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.find_student">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_student</span><span class="p">(</span><span class="n">student_id</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">student_id</span> <span class="o">==</span> <span class="n">student_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="find_instructor">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.find_instructor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_instructor</span><span class="p">(</span><span class="n">instructor_id</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">instructors</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">==</span> <span class="n">instructor_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="find_course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.find_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_course</span><span class="p">(</span><span class="n">course_id</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">course_id</span> <span class="o">==</span> <span class="n">course_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<span class="n">student_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add new Student&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">student_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Student Name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Student Age&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Student Email&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Student ID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="n">student_name</span>  <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">student_age</span>   <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">student_email</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">student_id</span>    <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">student_name</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">student_age</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">student_email</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">student_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="add_student">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.add_student">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_student</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">name</span>  <span class="o">=</span> <span class="n">student_name</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">age</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">student_age</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">student_email</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">sid</span>   <span class="o">=</span> <span class="n">student_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">sid</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Name and Student ID are required&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">find_student</span><span class="p">(</span><span class="n">sid</span><span class="p">):</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Student ID already exists&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">sid</span><span class="p">)</span>
+        <span class="n">students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">db_add_student</span><span class="p">(</span><span class="n">sid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  <span class="c1"># NEW</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Student &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; added&quot;</span><span class="p">)</span>
+        <span class="n">refresh_registration_dropdowns</span><span class="p">()</span>
+        <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="update_student_record">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.update_student_record">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_student_record</span><span class="p">():</span>
+    <span class="n">sid</span> <span class="o">=</span> <span class="n">student_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">find_student</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Student not found by ID&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">student_name</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">student_age</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="n">student_email</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">db_update_student</span><span class="p">(</span><span class="n">sid</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  <span class="c1"># NEW</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="s2">&quot;Student updated&quot;</span><span class="p">)</span>
+        <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="delete_student_by_id">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.delete_student_by_id">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_student_by_id</span><span class="p">():</span>
+    <span class="n">sid</span> <span class="o">=</span> <span class="n">student_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">find_student</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Student not found by ID&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">:</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">enrolled_students</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">students</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Deleted student </span><span class="si">{</span><span class="n">sid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">refresh_registration_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Student&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">add_student</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Update Student (by ID)&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">update_student_record</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">student_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Delete Student (by ID)&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">delete_student_by_id</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="n">instructor_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add new Instructor&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">instructor_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor Name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor Age&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor Email&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor ID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="n">instructor_name</span>  <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">instructor_age</span>   <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">instructor_email</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">instructor_id</span>    <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">instructor_name</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">instructor_age</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">instructor_email</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">instructor_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="add_instructor">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.add_instructor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_instructor</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">name</span>  <span class="o">=</span> <span class="n">instructor_name</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">age</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">instructor_age</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">instructor_email</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">iid</span>   <span class="o">=</span> <span class="n">instructor_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">iid</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Name and Instructor ID are required&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">find_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">):</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Instructor ID already exists&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">i</span> <span class="o">=</span> <span class="n">Instructor</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">iid</span><span class="p">)</span>
+        <span class="n">instructors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">db_add_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  <span class="c1"># NEW</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Instructor &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; added&quot;</span><span class="p">)</span>
+        <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+        <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="update_instructor_record">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.update_instructor_record">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_instructor_record</span><span class="p">():</span>
+    <span class="n">iid</span> <span class="o">=</span> <span class="n">instructor_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">ins</span> <span class="o">=</span> <span class="n">find_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ins</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Instructor not found by ID&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">ins</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">instructor_name</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">ins</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">instructor_age</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">ins</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="n">instructor_email</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">db_update_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">,</span> <span class="n">ins</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">ins</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">ins</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  <span class="c1"># NEW</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="s2">&quot;Instructor updated&quot;</span><span class="p">)</span>
+        <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="delete_instructor_by_id">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.delete_instructor_by_id">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_instructor_by_id</span><span class="p">():</span>
+    <span class="n">iid</span> <span class="o">=</span> <span class="n">instructor_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">ins</span> <span class="o">=</span> <span class="n">find_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ins</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Instructor not found by ID&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">ins</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Cannot delete: instructor has assigned courses. Reassign first.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">instructors</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ins</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Deleted instructor </span><span class="si">{</span><span class="n">iid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Instructor&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">add_instructor</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Update Instructor (by ID)&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">update_instructor_record</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">instructor_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Delete Instructor (by ID)&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">delete_instructor_by_id</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="n">course_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add new Course&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">course_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Course ID&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Course Name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor ID (must be registered)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="n">course_id</span>   <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">course_name</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">course_inst</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">course_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">course_name</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">course_inst</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="add_course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.add_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_course</span><span class="p">():</span>
+    <span class="n">cid</span> <span class="o">=</span> <span class="n">course_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">cname</span> <span class="o">=</span> <span class="n">course_name</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">iid</span> <span class="o">=</span> <span class="n">course_inst</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cid</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">cname</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">iid</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Course ID, Name, and Instructor ID are required&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">find_course</span><span class="p">(</span><span class="n">cid</span><span class="p">):</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Course ID already exists&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">inst</span> <span class="o">=</span> <span class="n">find_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inst</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Instructor not found&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">cname</span><span class="p">,</span> <span class="n">inst</span><span class="p">)</span>
+        <span class="n">courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">inst</span><span class="o">.</span><span class="n">assign_course</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">db_add_course</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">cname</span><span class="p">,</span> <span class="n">iid</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  <span class="c1"># NEW</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Course &#39;</span><span class="si">{</span><span class="n">cname</span><span class="si">}</span><span class="s2">&#39; added&quot;</span><span class="p">)</span>
+        <span class="n">refresh_registration_dropdowns</span><span class="p">()</span>
+        <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+        <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="update_course_record">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.update_course_record">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_course_record</span><span class="p">():</span>
+    <span class="n">cid</span> <span class="o">=</span> <span class="n">course_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">crs</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Course not found by ID&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">cname</span> <span class="o">=</span> <span class="n">course_name</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">iid</span> <span class="o">=</span> <span class="n">course_inst</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">inst</span> <span class="o">=</span> <span class="n">find_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span> <span class="k">if</span> <span class="n">iid</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cname</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Course name required&quot;</span><span class="p">);</span> <span class="k">return</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inst</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Instructor not found by ID&quot;</span><span class="p">);</span> <span class="k">return</span>
+
+    <span class="k">if</span> <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span> <span class="o">!=</span> <span class="n">inst</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span> <span class="ow">and</span> <span class="n">crs</span> <span class="ow">in</span> <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+            <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+        <span class="n">inst</span><span class="o">.</span><span class="n">assign_course</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+        <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span> <span class="o">=</span> <span class="n">inst</span>
+
+    <span class="n">crs</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">cname</span>
+    <span class="n">db_update_course</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">cname</span><span class="p">,</span> <span class="n">iid</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  <span class="c1"># NEW</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="s2">&quot;Course updated&quot;</span><span class="p">)</span>
+    <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+
+
+<div class="viewcode-block" id="delete_course_by_id">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.delete_course_by_id">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_course_by_id</span><span class="p">():</span>
+    <span class="n">cid</span> <span class="o">=</span> <span class="n">course_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">crs</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Course not found by ID&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span> <span class="ow">and</span> <span class="n">crs</span> <span class="ow">in</span> <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+        <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">crs</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">registered_courses</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+    <span class="n">courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Deleted course </span><span class="si">{</span><span class="n">cid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">refresh_registration_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Course&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">add_course</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Update Course (by ID)&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">update_course_record</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">course_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Delete Course (by ID)&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">delete_course_by_id</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="n">reg_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Register Student in Course&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">reg_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">selected_student</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;-- select student --&quot;</span><span class="p">)</span>
+<span class="n">selected_course</span>  <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;-- select course --&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_stu_label</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">student_id</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_crs_label</span><span class="p">(</span><span class="n">c</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">course_id</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">course_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">reg_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Student&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">student_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span><span class="p">(</span><span class="n">reg_frame</span><span class="p">,</span> <span class="n">selected_student</span><span class="p">,</span> <span class="s2">&quot;-- select student --&quot;</span><span class="p">)</span>
+<span class="n">student_menu</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">student_menu</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">reg_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Course&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">course_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span><span class="p">(</span><span class="n">reg_frame</span><span class="p">,</span> <span class="n">selected_course</span><span class="p">,</span> <span class="s2">&quot;-- select course --&quot;</span><span class="p">)</span>
+<span class="n">course_menu</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">course_menu</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="refresh_registration_dropdowns">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.refresh_registration_dropdowns">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">refresh_registration_dropdowns</span><span class="p">():</span>
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">student_menu</span><span class="p">[</span><span class="s2">&quot;menu&quot;</span><span class="p">]</span>
+    <span class="n">menu</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">students</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+            <span class="n">lbl</span> <span class="o">=</span> <span class="n">_stu_label</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">lbl</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">_setit</span><span class="p">(</span><span class="n">selected_student</span><span class="p">,</span> <span class="n">lbl</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">selected_student</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">):</span>
+            <span class="n">selected_student</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">_stu_label</span><span class="p">(</span><span class="n">students</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">selected_student</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;-- select student --&quot;</span><span class="p">)</span>
+
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">course_menu</span><span class="p">[</span><span class="s2">&quot;menu&quot;</span><span class="p">]</span>
+    <span class="n">menu</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">courses</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+            <span class="n">lbl</span> <span class="o">=</span> <span class="n">_crs_label</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">lbl</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">_setit</span><span class="p">(</span><span class="n">selected_course</span><span class="p">,</span> <span class="n">lbl</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">selected_course</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">):</span>
+            <span class="n">selected_course</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">_crs_label</span><span class="p">(</span><span class="n">courses</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">selected_course</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;-- select course --&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="register_student_in_course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.register_student_in_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">register_student_in_course</span><span class="p">():</span>
+    <span class="n">s_lbl</span> <span class="o">=</span> <span class="n">selected_student</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">c_lbl</span> <span class="o">=</span> <span class="n">selected_course</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">s_lbl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">c_lbl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">):</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Please select both a student and a course&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">sid</span> <span class="o">=</span> <span class="n">s_lbl</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cid</span> <span class="o">=</span> <span class="n">c_lbl</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">find_student</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">c</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Could not find selected student/course&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is already enrolled in </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">course_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">add_student</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">register_course</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">db_enroll</span><span class="p">(</span><span class="n">sid</span><span class="p">,</span> <span class="n">cid</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  <span class="c1"># NEW</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Enrolled </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">course_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">reg_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Register&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">register_student_in_course</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+
+<span class="n">assign_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Assign Instructor to Course&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">assign_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">selected_instructor</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;-- select instructor --&quot;</span><span class="p">)</span>
+<span class="n">selected_course_for_inst</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;-- select course --&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_inst_label</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">.</span><span class="n">instructor_id</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">i</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_course_label</span><span class="p">(</span><span class="n">c</span><span class="p">):</span> <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">course_id</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">course_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">assign_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">instructor_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span><span class="p">(</span><span class="n">assign_frame</span><span class="p">,</span> <span class="n">selected_instructor</span><span class="p">,</span> <span class="s2">&quot;-- select instructor --&quot;</span><span class="p">)</span>
+<span class="n">instructor_menu</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">instructor_menu</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">assign_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Course&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">course_menu_inst</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span><span class="p">(</span><span class="n">assign_frame</span><span class="p">,</span> <span class="n">selected_course_for_inst</span><span class="p">,</span> <span class="s2">&quot;-- select course --&quot;</span><span class="p">)</span>
+<span class="n">course_menu_inst</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">course_menu_inst</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="refresh_assignment_dropdowns">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.refresh_assignment_dropdowns">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">refresh_assignment_dropdowns</span><span class="p">():</span>
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">instructor_menu</span><span class="p">[</span><span class="s2">&quot;menu&quot;</span><span class="p">]</span>
+    <span class="n">menu</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">instructors</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">instructors</span><span class="p">:</span>
+            <span class="n">lbl</span> <span class="o">=</span> <span class="n">_inst_label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">lbl</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">_setit</span><span class="p">(</span><span class="n">selected_instructor</span><span class="p">,</span> <span class="n">lbl</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">selected_instructor</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">):</span>
+            <span class="n">selected_instructor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">_inst_label</span><span class="p">(</span><span class="n">instructors</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">selected_instructor</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;-- select instructor --&quot;</span><span class="p">)</span>
+
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">course_menu_inst</span><span class="p">[</span><span class="s2">&quot;menu&quot;</span><span class="p">]</span>
+    <span class="n">menu</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">courses</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+            <span class="n">lbl</span> <span class="o">=</span> <span class="n">_course_label</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">lbl</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">_setit</span><span class="p">(</span><span class="n">selected_course_for_inst</span><span class="p">,</span> <span class="n">lbl</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">selected_course_for_inst</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">):</span>
+            <span class="n">selected_course_for_inst</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">_course_label</span><span class="p">(</span><span class="n">courses</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">selected_course_for_inst</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;-- select course --&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="assign_instructor_to_course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.assign_instructor_to_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">assign_instructor_to_course</span><span class="p">():</span>
+    <span class="n">i_lbl</span> <span class="o">=</span> <span class="n">selected_instructor</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">c_lbl</span> <span class="o">=</span> <span class="n">selected_course_for_inst</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">i_lbl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">c_lbl</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">):</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Please select both an instructor and a course&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">iid</span> <span class="o">=</span> <span class="n">i_lbl</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cid</span> <span class="o">=</span> <span class="n">c_lbl</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">instr</span> <span class="o">=</span> <span class="n">find_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">instr</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">crs</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Could not find the selected instructor/course&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">if</span> <span class="n">crs</span> <span class="ow">in</span> <span class="n">instr</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">instr</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is already assigned to </span><span class="si">{</span><span class="n">crs</span><span class="o">.</span><span class="n">course_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">instr</span><span class="o">.</span><span class="n">assign_course</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+        <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span> <span class="o">=</span> <span class="n">instr</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Assigned </span><span class="si">{</span><span class="n">instr</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">crs</span><span class="o">.</span><span class="n">course_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+        <span class="n">refresh_tables</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span></div>
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">assign_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Assign&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">assign_instructor_to_course</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<div class="viewcode-block" id="save_and_notify">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.save_and_notify">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_and_notify</span><span class="p">():</span>
+    <span class="n">save_to_file</span><span class="p">(</span><span class="s2">&quot;school_data.json&quot;</span><span class="p">,</span> <span class="n">students</span><span class="p">,</span> <span class="n">instructors</span><span class="p">,</span> <span class="n">courses</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Saved&quot;</span><span class="p">,</span> <span class="s2">&quot;Data saved successfully!&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_and_restore">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.load_and_restore">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_and_restore</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s2">&quot;school_data.json&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;school_data.json not found&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">students</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="n">instructors</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span> <span class="n">courses</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;instructors&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">ins</span> <span class="o">=</span> <span class="n">Instructor</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">],</span> <span class="n">i</span><span class="p">[</span><span class="s2">&quot;instructor_id&quot;</span><span class="p">])</span>
+        <span class="n">instructors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ins</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;students&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">stu</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="s2">&quot;student_id&quot;</span><span class="p">])</span>
+        <span class="n">students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stu</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_instr</span><span class="p">(</span><span class="n">iid</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">instructors</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">==</span> <span class="n">iid</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;courses&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">ins</span> <span class="o">=</span> <span class="n">_find_instr</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;instructor_id&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ins</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s2">&quot;course_id&quot;</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;course_name&quot;</span><span class="p">],</span> <span class="n">ins</span><span class="p">)</span>
+        <span class="n">courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+        <span class="n">ins</span><span class="o">.</span><span class="n">assign_course</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_stu</span><span class="p">(</span><span class="n">sid</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">students</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">student_id</span> <span class="o">==</span> <span class="n">sid</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;courses&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">courses</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">course_id</span> <span class="o">==</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;course_id&quot;</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">crs</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">sid</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;enrolled_students&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">stu</span> <span class="o">=</span> <span class="n">_find_stu</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">stu</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">crs</span><span class="o">.</span><span class="n">add_student</span><span class="p">(</span><span class="n">stu</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">crs</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stu</span><span class="o">.</span><span class="n">registered_courses</span><span class="p">:</span>
+                        <span class="n">stu</span><span class="o">.</span><span class="n">register_course</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Loaded&quot;</span><span class="p">,</span> <span class="s2">&quot;Data loaded successfully&quot;</span><span class="p">)</span>
+    <span class="n">refresh_registration_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+    <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+<span class="n">btns_row</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="n">btns_row</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">btns_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Save All Data&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">save_and_notify</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">btns_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Load Data&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">load_and_restore</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">btns_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Load from DB&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">load_from_database</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<div class="viewcode-block" id="do_backup">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.do_backup">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">do_backup</span><span class="p">():</span>
+    <span class="n">dst</span> <span class="o">=</span> <span class="n">backup_db</span><span class="p">(</span><span class="n">DB_PATH</span><span class="p">,</span> <span class="s2">&quot;school_backup.db&quot;</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Backup&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Database copied to </span><span class="si">{</span><span class="n">dst</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">btns_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Backup DB&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">do_backup</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="n">search_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="n">search_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">search_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Search (name / ID / course):&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">search_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">search_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">search_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<div class="viewcode-block" id="do_search">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.do_search">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">do_search</span><span class="p">():</span>
+    <span class="n">refresh_tables</span><span class="p">(</span><span class="n">search_entry</span><span class="o">.</span><span class="n">get</span><span class="p">())</span></div>
+
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">search_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Search&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">do_search</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">search_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Clear&quot;</span><span class="p">,</span>
+          <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:(</span><span class="n">search_entry</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">),</span> <span class="n">refresh_tables</span><span class="p">()))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+
+<span class="n">tables_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">LabelFrame</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;All Records&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">tables_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+
+<span class="n">stu_cols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;student_id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;courses&quot;</span><span class="p">)</span>
+<span class="n">students_tree</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">tables_frame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">stu_cols</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;headings&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">stu_cols</span><span class="p">:</span>
+    <span class="n">students_tree</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+    <span class="n">students_tree</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">140</span> <span class="k">if</span> <span class="n">c</span><span class="o">!=</span><span class="s2">&quot;courses&quot;</span> <span class="k">else</span> <span class="mi">220</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">students_tree</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;nsew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+
+<span class="n">inst_cols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;instructor_id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;assigned&quot;</span><span class="p">)</span>
+<span class="n">instructors_tree</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">tables_frame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">inst_cols</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;headings&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">inst_cols</span><span class="p">:</span>
+    <span class="n">instructors_tree</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+    <span class="n">instructors_tree</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">140</span> <span class="k">if</span> <span class="n">c</span><span class="o">!=</span><span class="s2">&quot;assigned&quot;</span> <span class="k">else</span> <span class="mi">220</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">instructors_tree</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;nsew&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+
+<span class="n">crs_cols</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;course_id&quot;</span><span class="p">,</span> <span class="s2">&quot;course_name&quot;</span><span class="p">,</span> <span class="s2">&quot;instructor_id&quot;</span><span class="p">,</span> <span class="s2">&quot;enrolled&quot;</span><span class="p">)</span>
+<span class="n">courses_tree</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">tables_frame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">crs_cols</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;headings&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">crs_cols</span><span class="p">:</span>
+    <span class="n">courses_tree</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">))</span>
+    <span class="n">courses_tree</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">160</span> <span class="k">if</span> <span class="n">c</span><span class="o">!=</span><span class="s2">&quot;enrolled&quot;</span> <span class="k">else</span> <span class="mi">240</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">courses_tree</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">&quot;nsew&quot;</span><span class="p">)</span>
+
+<span class="n">tables_frame</span><span class="o">.</span><span class="n">grid_columnconfigure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tables_frame</span><span class="o">.</span><span class="n">grid_columnconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tables_frame</span><span class="o">.</span><span class="n">grid_columnconfigure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tables_frame</span><span class="o">.</span><span class="n">grid_rowconfigure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="refresh_tables">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.refresh_tables">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">refresh_tables</span><span class="p">(</span><span class="n">filter_text</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">ft</span> <span class="o">=</span> <span class="n">filter_text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">students_tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span> <span class="n">students_tree</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="n">courses_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="n">course_id</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">registered_courses</span><span class="p">])</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">student_id</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="n">courses_str</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ft</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">ft</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">):</span>
+            <span class="n">students_tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">row</span><span class="p">)</span>
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">instructors_tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span> <span class="n">instructors_tree</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ins</span> <span class="ow">in</span> <span class="n">instructors</span><span class="p">:</span>
+        <span class="n">assigned_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="n">course_id</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ins</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">])</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="p">(</span><span class="n">ins</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">ins</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">ins</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">ins</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="n">assigned_str</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ft</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">ft</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">):</span>
+            <span class="n">instructors_tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">row</span><span class="p">)</span>
+
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">courses_tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span> <span class="n">courses_tree</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+        <span class="n">instr_id</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">instructor_id</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">instructor</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">enrolled_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">s</span><span class="o">.</span><span class="n">student_id</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">])</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">course_name</span><span class="p">,</span> <span class="n">instr_id</span><span class="p">,</span> <span class="n">enrolled_str</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">ft</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">ft</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">):</span>
+            <span class="n">courses_tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">row</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="on_student_select">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.on_student_select">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_student_select</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">students_tree</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sel</span><span class="p">:</span> <span class="k">return</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">students_tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">sel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">)</span>
+    <span class="n">sid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">student_id</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">student_id</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sid</span><span class="p">)</span>
+    <span class="n">student_name</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">student_name</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">student_age</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">student_age</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">age</span><span class="p">))</span>
+    <span class="n">student_email</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">student_email</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="on_instructor_select">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.on_instructor_select">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_instructor_select</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">instructors_tree</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sel</span><span class="p">:</span> <span class="k">return</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">instructors_tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">sel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">)</span>
+    <span class="n">iid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">instructor_id</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">instructor_id</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">iid</span><span class="p">)</span>
+    <span class="n">instructor_name</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">instructor_name</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">instructor_age</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">instructor_age</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">age</span><span class="p">))</span>
+    <span class="n">instructor_email</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">instructor_email</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="on_course_select">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.on_course_select">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_course_select</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">courses_tree</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sel</span><span class="p">:</span> <span class="k">return</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">courses_tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">sel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">)</span>
+    <span class="n">cid</span><span class="p">,</span> <span class="n">cname</span><span class="p">,</span> <span class="n">iid</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">course_id</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">course_id</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cid</span><span class="p">)</span>
+    <span class="n">course_name</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">course_name</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cname</span><span class="p">)</span>
+    <span class="n">course_inst</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;end&quot;</span><span class="p">);</span> <span class="n">course_inst</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">iid</span><span class="p">)</span></div>
+
+
+<span class="n">students_tree</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;&lt;TreeviewSelect&gt;&gt;&quot;</span><span class="p">,</span> <span class="n">on_student_select</span><span class="p">)</span>
+<span class="n">instructors_tree</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;&lt;TreeviewSelect&gt;&gt;&quot;</span><span class="p">,</span> <span class="n">on_instructor_select</span><span class="p">)</span>
+<span class="n">courses_tree</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;&lt;TreeviewSelect&gt;&gt;&quot;</span><span class="p">,</span> <span class="n">on_course_select</span><span class="p">)</span>
+
+<span class="n">actions_row</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="n">actions_row</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">actions_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Update Student&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">update_student_record</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">actions_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Update Instructor&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">update_instructor_record</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">actions_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Update Course&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">update_course_record</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="delete_selected_student">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.delete_selected_student">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_selected_student</span><span class="p">():</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">students_tree</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sel</span><span class="p">:</span> <span class="k">return</span>
+    <span class="n">sid</span> <span class="o">=</span> <span class="n">students_tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">sel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">find_student</span><span class="p">(</span><span class="n">sid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span> <span class="k">return</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">:</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">enrolled_students</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">students</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">db_delete_student</span><span class="p">(</span><span class="n">sid</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span> 
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Deleted student </span><span class="si">{</span><span class="n">sid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">refresh_registration_dropdowns</span><span class="p">();</span> <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="delete_selected_instructor">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.delete_selected_instructor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_selected_instructor</span><span class="p">():</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">instructors_tree</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sel</span><span class="p">:</span> <span class="k">return</span>
+    <span class="n">iid</span> <span class="o">=</span> <span class="n">instructors_tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">sel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ins</span> <span class="o">=</span> <span class="n">find_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ins</span><span class="p">:</span> <span class="k">return</span>
+    <span class="k">if</span> <span class="n">ins</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;Cannot delete: instructor has assigned courses. Reassign first.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">instructors</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">ins</span><span class="p">)</span>
+    <span class="n">db_delete_instructor</span><span class="p">(</span><span class="n">iid</span><span class="p">,</span> <span class="n">DB_PATH</span><span class="p">)</span>  
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Deleted instructor </span><span class="si">{</span><span class="n">iid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">refresh_assignment_dropdowns</span><span class="p">();</span> <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="delete_selected_course">
+<a class="viewcode-back" href="../Tkinter.html#Tkinter.delete_selected_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">delete_selected_course</span><span class="p">():</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">courses_tree</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sel</span><span class="p">:</span> <span class="k">return</span>
+    <span class="n">cid</span> <span class="o">=</span> <span class="n">courses_tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">sel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;values&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">find_course</span><span class="p">(</span><span class="n">cid</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">crs</span><span class="p">:</span> <span class="k">return</span>
+    <span class="k">if</span> <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span> <span class="ow">and</span> <span class="n">crs</span> <span class="ow">in</span> <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+        <span class="n">crs</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">crs</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">registered_courses</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+    <span class="n">courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Deleted course </span><span class="si">{</span><span class="n">cid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">refresh_registration_dropdowns</span><span class="p">();</span> <span class="n">refresh_assignment_dropdowns</span><span class="p">();</span> <span class="n">refresh_tables</span><span class="p">()</span></div>
+
+
+<span class="n">del_row</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+<span class="n">del_row</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">del_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Delete Selected Student&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">delete_selected_student</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">del_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Delete Selected Instructor&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">delete_selected_instructor</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">del_row</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Delete Selected Course&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">delete_selected_course</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Initial fills</span>
+<span class="n">refresh_registration_dropdowns</span><span class="p">()</span>
+<span class="n">refresh_assignment_dropdowns</span><span class="p">()</span>
+<span class="n">refresh_tables</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hussein Moukalled 202306186.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

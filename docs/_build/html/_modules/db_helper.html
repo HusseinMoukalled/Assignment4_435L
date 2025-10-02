@@ -1,0 +1,453 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>db_helper &mdash; Lab 3 - Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lab 3 - Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyQt5.html">pyQt5 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../db_helper.html">db_helper module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lab 3 - Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">db_helper</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for db_helper</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">closing</span>
+
+
+<div class="viewcode-block" id="get_conn">
+<a class="viewcode-back" href="../db_helper.html#db_helper.get_conn">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_conn</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create and return a connection to the SQLite database.</span>
+
+<span class="sd">    :param path: Path to the SQLite database file. Defaults to ``school.db``.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: SQLite connection object.</span>
+<span class="sd">    :rtype: sqlite3.Connection</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="init_db">
+<a class="viewcode-back" href="../db_helper.html#db_helper.init_db">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_db</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize the database by creating required tables if they do not exist.</span>
+
+<span class="sd">    Tables created:</span>
+<span class="sd">      - students</span>
+<span class="sd">      - instructors</span>
+<span class="sd">      - courses</span>
+<span class="sd">      - enrollments</span>
+
+<span class="sd">    :param path: Path to the SQLite database file. Defaults to ``school.db``.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS students(</span>
+<span class="s2">            student_id TEXT PRIMARY KEY,</span>
+<span class="s2">            name TEXT NOT NULL,</span>
+<span class="s2">            age INTEGER NOT NULL,</span>
+<span class="s2">            email TEXT NOT NULL</span>
+<span class="s2">        )&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS instructors(</span>
+<span class="s2">            instructor_id TEXT PRIMARY KEY,</span>
+<span class="s2">            name TEXT NOT NULL,</span>
+<span class="s2">            age INTEGER NOT NULL,</span>
+<span class="s2">            email TEXT NOT NULL</span>
+<span class="s2">        )&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS courses(</span>
+<span class="s2">            course_id TEXT PRIMARY KEY,</span>
+<span class="s2">            course_name TEXT NOT NULL,</span>
+<span class="s2">            instructor_id TEXT NOT NULL,</span>
+<span class="s2">            FOREIGN KEY (instructor_id) REFERENCES instructors(instructor_id)</span>
+<span class="s2">        )&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS enrollments(</span>
+<span class="s2">            student_id TEXT NOT NULL,</span>
+<span class="s2">            course_id TEXT NOT NULL,</span>
+<span class="s2">            PRIMARY KEY(student_id, course_id),</span>
+<span class="s2">            FOREIGN KEY (student_id) REFERENCES students(student_id),</span>
+<span class="s2">            FOREIGN KEY (course_id) REFERENCES courses(course_id)</span>
+<span class="s2">        )&quot;&quot;&quot;</span><span class="p">)</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="db_add_student">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_add_student">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_add_student</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Insert a new student into the students table.</span>
+
+<span class="sd">    :param student_id: Unique identifier for the student.</span>
+<span class="sd">    :type student_id: str</span>
+<span class="sd">    :param name: Student&#39;s name.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: Student&#39;s age.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param email: Student&#39;s email address.</span>
+<span class="sd">    :type email: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO students(student_id,name,age,email) VALUES(?,?,?,?)&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_update_student">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_update_student">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_update_student</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update an existing student&#39;s details.</span>
+
+<span class="sd">    :param student_id: ID of the student to update.</span>
+<span class="sd">    :type student_id: str</span>
+<span class="sd">    :param name: Updated student name.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: Updated student age.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param email: Updated student email.</span>
+<span class="sd">    :type email: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE students SET name=?, age=?, email=? WHERE student_id=?&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">student_id</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_delete_student">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_delete_student">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_delete_student</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a student and their enrollments from the database.</span>
+
+<span class="sd">    :param student_id: ID of the student to delete.</span>
+<span class="sd">    :type student_id: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM enrollments WHERE student_id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,))</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM students WHERE student_id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,))</span></div>
+
+
+
+<div class="viewcode-block" id="db_add_instructor">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_add_instructor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_add_instructor</span><span class="p">(</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Insert a new instructor into the instructors table.</span>
+
+<span class="sd">    :param instructor_id: Unique identifier for the instructor.</span>
+<span class="sd">    :type instructor_id: str</span>
+<span class="sd">    :param name: Instructor&#39;s name.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: Instructor&#39;s age.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param email: Instructor&#39;s email address.</span>
+<span class="sd">    :type email: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO instructors(instructor_id,name,age,email) VALUES(?,?,?,?)&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_update_instructor">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_update_instructor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_update_instructor</span><span class="p">(</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update an existing instructor&#39;s details.</span>
+
+<span class="sd">    :param instructor_id: ID of the instructor to update.</span>
+<span class="sd">    :type instructor_id: str</span>
+<span class="sd">    :param name: Updated instructor name.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: Updated instructor age.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param email: Updated instructor email.</span>
+<span class="sd">    :type email: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE instructors SET name=?, age=?, email=? WHERE instructor_id=?&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_delete_instructor">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_delete_instructor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_delete_instructor</span><span class="p">(</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete an instructor from the database.</span>
+
+<span class="sd">    :param instructor_id: ID of the instructor to delete.</span>
+<span class="sd">    :type instructor_id: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM instructors WHERE instructor_id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">instructor_id</span><span class="p">,))</span></div>
+
+
+
+<div class="viewcode-block" id="db_add_course">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_add_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_add_course</span><span class="p">(</span><span class="n">course_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Insert a new course into the courses table.</span>
+
+<span class="sd">    :param course_id: Unique identifier for the course.</span>
+<span class="sd">    :type course_id: str</span>
+<span class="sd">    :param course_name: Name of the course.</span>
+<span class="sd">    :type course_name: str</span>
+<span class="sd">    :param instructor_id: ID of the instructor assigned to the course.</span>
+<span class="sd">    :type instructor_id: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO courses(course_id,course_name,instructor_id) VALUES(?,?,?)&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">course_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_update_course">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_update_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_update_course</span><span class="p">(</span><span class="n">course_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update an existing course&#39;s details.</span>
+
+<span class="sd">    :param course_id: ID of the course to update.</span>
+<span class="sd">    :type course_id: str</span>
+<span class="sd">    :param course_name: Updated course name.</span>
+<span class="sd">    :type course_name: str</span>
+<span class="sd">    :param instructor_id: Updated instructor ID assigned to the course.</span>
+<span class="sd">    :type instructor_id: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE courses SET course_name=?, instructor_id=? WHERE course_id=?&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">course_name</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_delete_course">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_delete_course">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_delete_course</span><span class="p">(</span><span class="n">course_id</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a course and its related enrollments.</span>
+
+<span class="sd">    :param course_id: ID of the course to delete.</span>
+<span class="sd">    :type course_id: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM enrollments WHERE course_id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">course_id</span><span class="p">,))</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM courses WHERE course_id=?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">course_id</span><span class="p">,))</span></div>
+
+
+
+<div class="viewcode-block" id="db_enroll">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_enroll">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_enroll</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enroll a student in a course.</span>
+
+<span class="sd">    :param student_id: ID of the student to enroll.</span>
+<span class="sd">    :type student_id: str</span>
+<span class="sd">    :param course_id: ID of the course to enroll the student in.</span>
+<span class="sd">    :type course_id: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT OR IGNORE INTO enrollments(student_id, course_id) VALUES(?,?)&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_unenroll">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_unenroll">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_unenroll</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unenroll a student from a course.</span>
+
+<span class="sd">    :param student_id: ID of the student to unenroll.</span>
+<span class="sd">    :type student_id: str</span>
+<span class="sd">    :param course_id: ID of the course from which to unenroll.</span>
+<span class="sd">    :type course_id: str</span>
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM enrollments WHERE student_id=? AND course_id=?&quot;</span><span class="p">,</span>
+                     <span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course_id</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="db_fetch_all">
+<a class="viewcode-back" href="../db_helper.html#db_helper.db_fetch_all">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">db_fetch_all</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fetch all data from the database tables.</span>
+
+<span class="sd">    Retrieves:</span>
+<span class="sd">      - All students</span>
+<span class="sd">      - All instructors</span>
+<span class="sd">      - All courses</span>
+<span class="sd">      - All enrollments</span>
+
+<span class="sd">    :param path: Path to the SQLite database file.</span>
+<span class="sd">    :type path: str</span>
+<span class="sd">    :return: Dictionary containing lists of students, instructors, courses, and enrollments.</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">get_conn</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">,</span> <span class="n">closing</span><span class="p">(</span><span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT student_id,name,age,email FROM students&quot;</span><span class="p">)</span>
+        <span class="n">students</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT instructor_id,name,age,email FROM instructors&quot;</span><span class="p">)</span>
+        <span class="n">instructors</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT course_id,course_name,instructor_id FROM courses&quot;</span><span class="p">)</span>
+        <span class="n">courses</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT student_id,course_id FROM enrollments&quot;</span><span class="p">)</span>
+        <span class="n">enrollments</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;students&quot;</span><span class="p">:</span> <span class="n">students</span><span class="p">,</span>
+        <span class="s2">&quot;instructors&quot;</span><span class="p">:</span> <span class="n">instructors</span><span class="p">,</span>
+        <span class="s2">&quot;courses&quot;</span><span class="p">:</span> <span class="n">courses</span><span class="p">,</span>
+        <span class="s2">&quot;enrollments&quot;</span><span class="p">:</span> <span class="n">enrollments</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="backup_db">
+<a class="viewcode-back" href="../db_helper.html#db_helper.backup_db">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">backup_db</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s2">&quot;school.db&quot;</span><span class="p">,</span> <span class="n">dst</span><span class="o">=</span><span class="s2">&quot;school_backup.db&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a backup copy of the database.</span>
+
+<span class="sd">    :param src: Source database file. Defaults to ``school.db``.</span>
+<span class="sd">    :type src: str</span>
+<span class="sd">    :param dst: Destination backup file. Defaults to ``school_backup.db``.</span>
+<span class="sd">    :type dst: str</span>
+<span class="sd">    :return: Path to the backup file.</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dst</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Hussein Moukalled 202306186.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
